@@ -1,16 +1,12 @@
 {
-  "name": "@roadiehq/backstage-entity-validator",
+  "name": "@step-security/backstage-entity-validator",
   "version": "0.7.0",
   "author": "step-security",
   "description": "Backstage entity validator",
   "main": "dist/index.js",
   "license": "Apache-2.0",
   "private": false,
-  "homepage": "https://github.com/RoadieHQ/backstage-entity-validator",
-  "bugs": {
-    "url": "https://github.com/RoadieHQ/backstage-entity-validator/issues",
-    "email": "support@roadie.io"
-  },
+  "homepage": "https://github.com/step-security/backstage-entity-validator",
   "repository": "https://github.com/step-security/backstage-entity-validator",
   "scripts": {
     "validate": "node src/index.js",
@@ -35,7 +31,6 @@
   "keywords": [
     "backstage",
     "validation",
-    "linting",
-    "roadie"
+    "linting"
   ]
 }
