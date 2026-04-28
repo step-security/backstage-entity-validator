@@ -1,7 +1,7 @@
 {
   "name": "@roadiehq/backstage-entity-validator",
   "version": "0.7.0",
-  "author": "RoadieHQ",
+  "author": "step-security",
   "description": "Backstage entity validator",
   "main": "dist/index.js",
   "license": "Apache-2.0",
@@ -11,13 +11,7 @@
     "url": "https://github.com/RoadieHQ/backstage-entity-validator/issues",
     "email": "support@roadie.io"
   },
-  "repository": "https://github.com/RoadieHQ/backstage-entity-validator",
-  "publishConfig": {
-    "access": "public"
-  },
-  "bin": {
-    "validate-entity": "./bin/bev"
-  },
+  "repository": "https://github.com/step-security/backstage-entity-validator",
   "scripts": {
     "validate": "node src/index.js",
     "prepare": "ncc build src/index.js -o dist --source-map --license licenses.txt",
@@ -29,6 +23,7 @@
     "@roadiehq/roadie-backstage-entity-validator": "^2.8.1",
     "ajv": "^8.12.0",
     "ajv-formats": "^3.0.1",
+    "axios": "^1.15.2",
     "glob": "^13.0.0",
     "js-yaml": "^4.1.0",
     "minimist": "^1.2.8"

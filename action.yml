@@ -1,5 +1,6 @@
 name: 'Backstage entity validator'
 description: 'Run through a default set of schema validation for backstage entity catalog-info.yaml file'
+author: 'step-security'
 branding:
   icon: 'check-square'
   color: 'purple'

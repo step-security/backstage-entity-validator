@@ -2,8 +2,6 @@
 
 # Backstage entity validator
 
-This package can be used as a GitHub action or a standalone node.js module
-
 ## GitHub action
 
 ### Inputs
@@ -25,138 +23,26 @@ None. Prints out the validated YAML on success. Prints out errors on invalid YAM
 
 ### Example usage
 ```
-- uses:  RoadieHQ/backstage-entity-validator@v0.3.11
+- uses:  step-security/backstage-entity-validator@v0
   with:
     path: 'catalog-info-1.yaml'
 ```
 
 ```
-- uses:  RoadieHQ/backstage-entity-validator@v0.3.11
+- uses:  step-security/backstage-entity-validator@v0
   with:
     path: 'catalog-info-1.yaml,catalog-info-2.yaml,catalog-info-3.yaml'
 ```
 
 ```
-- uses:  RoadieHQ/backstage-entity-validator@v0.3.11
+- uses:  step-security/backstage-entity-validator@v0
   with:
     path: 'catalog-info-*.yaml,services/**/*/catalog-info.yaml'
 ```
 
 ```
-- uses:  RoadieHQ/backstage-entity-validator@v0.3.2
+- uses:  step-security/backstage-entity-validator@v0
   with:
     path: 'catalog-info-*.yaml,services/**/*/catalog-info.yaml'
     validationSchemaFileLocation: 'custom-validation-schema.json'
-```
-
-## CircleCI Orb
-
-### Inputs
-
-#### `path`
-
-**Optional** Path to the catalog-info.yaml file to validate. Defaults to `catalog-info.yaml` at the root of the repository.
-
-### Outputs
-
-None. Prints out the validated YAML on success. Prints out errors on invalid YAML
-
-### Example config
-```
-description: >
-  Sample catalog-info.yaml validation
-usage:
-  version: 2.1
-  orbs:
-    entity-validator: "step-security/backstage-entity-validator@0.3.11"
-  workflows:
-    use-entity-validator:
-      jobs:
-        - entity-validator/validate:
-            path: catalog-info.yaml
-```
-
-## Docker
-
-The validator is available as a Docker image at `step-security/backstage-entity-validator`.
-
-### Usage
-
-```bash
-# Validate a file in the current directory
-docker run --rm -v $(pwd):/workdir step-security/backstage-entity-validator catalog-info.yaml
-
-# Validate multiple files
-docker run --rm -v $(pwd):/workdir step-security/backstage-entity-validator catalog-info.yaml other-file.yaml
-
-# Validate with glob pattern
-docker run --rm -v $(pwd):/workdir step-security/backstage-entity-validator "services/*/catalog-info.yaml"
-```
-
-### Available Tags
-
-- `latest` - Latest release
-- `x.y.z` - Specific version (e.g., `0.6.2`)
-
-## Using the CLI
-
-### Usage
-
-```
-Usage: validate-entity [OPTION] [FILE]
-
-Validates Backstage entity definition files.  Files may be specified as
-arguments or via STDIN, one per line.
-
-OPTION:
--h  display help
--q  minimal output while validating entities
--i  validate files provided over standard input
--l  location of custom validation schema file
-```
-
-Examples:
-
-```
-# in a shell
-
-# validate all entities contained in the "catalog" and subfolders
-validate-entity catalog/**/*.yaml
-
-# list of files produced by a script to validate
-find-relevant-yaml-files.sh | validate-entity -i 
-```
-
-### Installing and running
-
-#### As a global tool
-
-```
-# install
-npm install --global @step-security/backstage-entity-validator
-
-# run
-validate-entity file1.yaml file2.yaml
-```
-#### In an existing node project
-
-```
-# install
-npm install --save-dev @step-security/backstage-entity-validator
-
-# run
-npx validate-entity file1.yaml file2.yaml
-```
-
-#### When working on this tool
-
-```
-# install
-npm install
-
-# run
-npm run validate file1.yaml file2.yaml
-
-# or
-bin/bev file1.yaml file2.yaml
 ```
