@@ -1,0 +1,21 @@
+name: 'Backstage entity validator'
+description: 'Run through a default set of schema validation for backstage entity catalog-info.yaml file'
+branding:
+  icon: 'check-square'
+  color: 'purple'
+
+inputs:
+  path:
+    description: 'path to the catalog-info.yaml file to validate'
+    required: true
+    default: "catalog-info.yaml"
+  verbose:
+    description: 'Specify whether the output should be verbose'
+    required: false
+    default: "true"
+  validationSchemaFileLocation:
+    description: 'Specify the location of the validation schema file'
+    required: false
+runs:
+  using: 'node24'
+  main: 'dist/index.js'
