@@ -11777,7 +11777,7 @@ class Ajv {
     constructor(opts = {}) {
         this.schemas = {};
         this.refs = {};
-        this.formats = {};
+        this.formats = Object.create(null);
         this._compilations = new Set();
         this._loading = {};
         this._cache = new Map();
@@ -14229,6 +14229,7 @@ exports["default"] = def;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const code_1 = __nccwpck_require__(8484);
+const util_1 = __nccwpck_require__(4464);
 const codegen_1 = __nccwpck_require__(1436);
 const error = {
     message: ({ schemaCode }) => (0, codegen_1.str) `must match pattern "${schemaCode}"`,
@@ -14241,11 +14242,19 @@ const def = {
     $data: true,
     error,
     code(cxt) {
-        const { data, $data, schema, schemaCode, it } = cxt;
-        // TODO regexp should be wrapped in try/catchs
+        const { gen, data, $data, schema, schemaCode, it } = cxt;
         const u = it.opts.unicodeRegExp ? "u" : "";
-        const regExp = $data ? (0, codegen_1._) `(new RegExp(${schemaCode}, ${u}))` : (0, code_1.usePattern)(cxt, schema);
-        cxt.fail$data((0, codegen_1._) `!${regExp}.test(${data})`);
+        if ($data) {
+            const { regExp } = it.opts.code;
+            const regExpCode = regExp.code === "new RegExp" ? (0, codegen_1._) `new RegExp` : (0, util_1.useFunc)(gen, regExp);
+            const valid = gen.let("valid");
+            gen.try(() => gen.assign(valid, (0, codegen_1._) `${regExpCode}(${schemaCode}, ${u}).test(${data})`), () => gen.assign(valid, false));
+            cxt.fail$data((0, codegen_1._) `!${valid}`);
+        }
+        else {
+            const regExp = (0, code_1.usePattern)(cxt, schema);
+            cxt.fail$data((0, codegen_1._) `!${regExp}.test(${data})`);
+        }
     },
 };
 exports["default"] = def;
@@ -71096,6 +71105,7 @@ exports.range = range;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.EXPANSION_MAX = void 0;
 exports.expand = expand;
 const balanced_match_1 = __nccwpck_require__(516);
 const escSlash = '\0SLASH' + Math.random() + '\0';
@@ -71113,6 +71123,7 @@ const openPattern = /\\{/g;
 const closePattern = /\\}/g;
 const commaPattern = /\\,/g;
 const periodPattern = /\\./g;
+exports.EXPANSION_MAX = 100_000;
 function numeric(str) {
     return !isNaN(str) ? parseInt(str, 10) : str.charCodeAt(0);
 }
@@ -71158,10 +71169,11 @@ function parseCommaParts(str) {
     parts.push.apply(parts, p);
     return parts;
 }
-function expand(str) {
+function expand(str, options = {}) {
     if (!str) {
         return [];
     }
+    const { max = exports.EXPANSION_MAX } = options;
     // I don't know why Bash 4.3 does this, but it does.
     // Anything starting with {} will have the first two bytes preserved
     // but *only* at the top level, so {},a}b will not expand to anything,
@@ -71171,7 +71183,7 @@ function expand(str) {
     if (str.slice(0, 2) === '{}') {
         str = '\\{\\}' + str.slice(2);
     }
-    return expand_(escapeBraces(str), true).map(unescapeBraces);
+    return expand_(escapeBraces(str), max, true).map(unescapeBraces);
 }
 function embrace(str) {
     return '{' + str + '}';
@@ -71185,7 +71197,7 @@ function lte(i, y) {
 function gte(i, y) {
     return i >= y;
 }
-function expand_(str, isTop) {
+function expand_(str, max, isTop) {
     /** @type {string[]} */
     const expansions = [];
     const m = (0, balanced_match_1.balanced)('{', '}', str);
@@ -71193,9 +71205,9 @@ function expand_(str, isTop) {
         return [str];
     // no need to expand pre, since it is guaranteed to be free of brace-sets
     const pre = m.pre;
-    const post = m.post.length ? expand_(m.post, false) : [''];
+    const post = m.post.length ? expand_(m.post, max, false) : [''];
     if (/\$$/.test(m.pre)) {
-        for (let k = 0; k < post.length; k++) {
+        for (let k = 0; k < post.length && k < max; k++) {
             const expansion = pre + '{' + m.body + '}' + post[k];
             expansions.push(expansion);
         }
@@ -71209,7 +71221,7 @@ function expand_(str, isTop) {
             // {a},b}
             if (m.post.match(/,(?!,).*\}/)) {
                 str = m.pre + '{' + m.body + escClose + m.post;
-                return expand_(str);
+                return expand_(str, max, true);
             }
             return [str];
         }
@@ -71221,7 +71233,7 @@ function expand_(str, isTop) {
             n = parseCommaParts(m.body);
             if (n.length === 1 && n[0] !== undefined) {
                 // x{{a,b}}y ==> x{a}y x{b}y
-                n = expand_(n[0], false).map(embrace);
+                n = expand_(n[0], max, false).map(embrace);
                 //XXX is this necessary? Can't seem to hit it in tests.
                 /* c8 ignore start */
                 if (n.length === 1) {
@@ -71275,11 +71287,11 @@ function expand_(str, isTop) {
         else {
             N = [];
             for (let j = 0; j < n.length; j++) {
-                N.push.apply(N, expand_(n[j], false));
+                N.push.apply(N, expand_(n[j], max, false));
             }
         }
         for (let j = 0; j < N.length; j++) {
-            for (let k = 0; k < post.length; k++) {
+            for (let k = 0; k < post.length && expansions.length < max; k++) {
                 const expansion = pre + N[j] + post[k];
                 if (!isTop || isSequence || expansion) {
                     expansions.push(expansion);
