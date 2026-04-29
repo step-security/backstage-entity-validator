@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const glob = require('glob');
-const { validateFromFile } = require('@roadiehq/roadie-backstage-entity-validator');
+const { validateFromFile } = require('./validator');
 const axios = require('axios');
 const fs = require('fs');
 

@@ -1,7 +1,7 @@
 
 describe('importer',() => {
   it('imports the module correctly', () => {
-    const { validateFromFile } = require('@roadiehq/roadie-backstage-entity-validator');
+    const { validateFromFile } = require('./validator');
     expect(validateFromFile).toBeTruthy();
   });
 });

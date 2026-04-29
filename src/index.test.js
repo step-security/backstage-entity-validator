@@ -7,7 +7,7 @@ const originalArgv = process.argv;
 
 // Mock modules
 jest.mock('@actions/core');
-jest.mock('@roadiehq/roadie-backstage-entity-validator');
+jest.mock('./validator');
 jest.mock('glob');
 
 describe('backstage-entity-validator', () => {
@@ -29,7 +29,7 @@ describe('backstage-entity-validator', () => {
     // Re-require mocked modules after resetModules
     core = require('@actions/core');
     glob = require('glob');
-    const validator = require('@roadiehq/roadie-backstage-entity-validator');
+    const validator = require('./validator');
     validateFromFile = validator.validateFromFile;
 
     // Set up default mock implementations
@@ -219,7 +219,7 @@ describe('backstage-entity-validator', () => {
         glob = require('glob');
         // @ts-ignore - mocking module for tests
         glob.sync = jest.fn((pattern) => [pattern]);
-        const validator = require('@roadiehq/roadie-backstage-entity-validator');
+        const validator = require('./validator');
         validator.validateFromFile.mockResolvedValue(undefined);
         const indexModule = require('./index');
 
@@ -237,7 +237,7 @@ describe('backstage-entity-validator', () => {
         glob = require('glob');
         // @ts-ignore - mocking module for tests
         glob.sync = jest.fn((pattern) => [pattern]);
-        const validator = require('@roadiehq/roadie-backstage-entity-validator');
+        const validator = require('./validator');
         validator.validateFromFile.mockResolvedValue(undefined);
         const indexModule = require('./index');
 
@@ -257,7 +257,7 @@ describe('backstage-entity-validator', () => {
         glob = require('glob');
         // @ts-ignore - mocking module for tests
         glob.sync = jest.fn((pattern) => [pattern]);
-        const validator = require('@roadiehq/roadie-backstage-entity-validator');
+        const validator = require('./validator');
         validator.validateFromFile.mockResolvedValue(undefined);
         const indexModule = require('./index');
 
@@ -277,7 +277,7 @@ describe('backstage-entity-validator', () => {
         glob = require('glob');
         // @ts-ignore - mocking module for tests
         glob.sync = jest.fn((pattern) => [pattern]);
-        const validator = require('@roadiehq/roadie-backstage-entity-validator');
+        const validator = require('./validator');
         validator.validateFromFile.mockResolvedValue(undefined);
         const indexModule = require('./index');
 
@@ -318,7 +318,7 @@ describe('backstage-entity-validator', () => {
         glob = require('glob');
         // @ts-ignore - mocking module for tests
         glob.sync = jest.fn().mockReturnValue(['services/foo/catalog-info.yaml', 'services/bar/catalog-info.yaml']);
-        const validator = require('@roadiehq/roadie-backstage-entity-validator');
+        const validator = require('./validator');
         validator.validateFromFile.mockResolvedValue(undefined);
         const indexModule = require('./index');
 
@@ -360,7 +360,7 @@ describe('backstage-entity-validator', () => {
         glob.sync = jest.fn()
           .mockReturnValueOnce(['services/a.yaml'])
           .mockReturnValueOnce(['teams/b.yaml']);
-        const validator = require('@roadiehq/roadie-backstage-entity-validator');
+        const validator = require('./validator');
         validator.validateFromFile.mockResolvedValue(undefined);
         const indexModule = require('./index');
 
@@ -385,7 +385,7 @@ describe('backstage-entity-validator', () => {
       glob = require('glob');
       // @ts-ignore - mocking module for tests
       glob.sync = jest.fn((pattern) => [pattern]);
-      const validator = require('@roadiehq/roadie-backstage-entity-validator');
+      const validator = require('./validator');
       validator.validateFromFile.mockResolvedValue(undefined);
       const indexModule = require('./index');
 
@@ -408,7 +408,7 @@ describe('backstage-entity-validator', () => {
       glob = require('glob');
       // @ts-ignore - mocking module for tests
       glob.sync = jest.fn((pattern) => [pattern]);
-      const validator = require('@roadiehq/roadie-backstage-entity-validator');
+      const validator = require('./validator');
       validator.validateFromFile.mockResolvedValue(undefined);
       const indexModule = require('./index');
 
@@ -434,7 +434,7 @@ describe('backstage-entity-validator', () => {
       glob = require('glob');
       // @ts-ignore - mocking module for tests
       glob.sync = jest.fn((pattern) => [pattern]);
-      const validator = require('@roadiehq/roadie-backstage-entity-validator');
+      const validator = require('./validator');
       validator.validateFromFile.mockResolvedValue(undefined);
       const indexModule = require('./index');
 
@@ -457,7 +457,7 @@ describe('backstage-entity-validator', () => {
       glob = require('glob');
       // @ts-ignore - mocking module for tests
       glob.sync = jest.fn((pattern) => [pattern]);
-      const validator = require('@roadiehq/roadie-backstage-entity-validator');
+      const validator = require('./validator');
       validator.validateFromFile.mockResolvedValue(undefined);
       const indexModule = require('./index');
 
@@ -479,7 +479,7 @@ describe('backstage-entity-validator', () => {
       glob = require('glob');
       // @ts-ignore - mocking module for tests
       glob.sync = jest.fn((pattern) => [pattern]);
-      const validator = require('@roadiehq/roadie-backstage-entity-validator');
+      const validator = require('./validator');
       validator.validateFromFile.mockResolvedValue(undefined);
       const indexModule = require('./index');
 
@@ -502,7 +502,7 @@ describe('backstage-entity-validator', () => {
       glob = require('glob');
       // @ts-ignore - mocking module for tests
       glob.sync = jest.fn((pattern) => [pattern]);
-      const validator = require('@roadiehq/roadie-backstage-entity-validator');
+      const validator = require('./validator');
       validator.validateFromFile.mockResolvedValue(undefined);
       const indexModule = require('./index');
 
