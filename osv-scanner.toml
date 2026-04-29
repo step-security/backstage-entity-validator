@@ -1,0 +1,35 @@
+[[IgnoredVulns]]
+id = "GHSA-h5c3-5r3r-rr8q"
+reason = "Not reachable - @octokit/plugin-paginate-rest is a transitive dep via @backstage/integration for SCM operations. Our usage only calls validateFromFile() which does local YAML schema validation and never makes GitHub API calls."
+
+[[IgnoredVulns]]
+id = "GHSA-rmvr-2pp2-xj38"
+reason = "Not reachable - @octokit/request is a transitive dep via @backstage/integration. validateFromFile() performs local file validation only and never issues HTTP requests through octokit."
+
+[[IgnoredVulns]]
+id = "GHSA-xx4v-prfh-6cgc"
+reason = "Not reachable - @octokit/request-error is a transitive dep via @backstage/integration. No octokit requests are made by validateFromFile(), so the authorization header redaction code is never exercised."
+
+[[IgnoredVulns]]
+id = "GHSA-2mjp-6q6p-2qxm"
+reason = "Not reachable - undici@5.29.0 is pulled in via @actions/core@1 -> @actions/http-client@2. validateFromFile() does not make HTTP requests, so undici's request handling code is never exercised."
+
+[[IgnoredVulns]]
+id = "GHSA-4992-7rv2-5pvq"
+reason = "Not reachable - undici@5.29.0 is pulled in via @actions/core@1 -> @actions/http-client@2. validateFromFile() does not make HTTP requests, so undici's upgrade header handling is never exercised."
+
+[[IgnoredVulns]]
+id = "GHSA-g9mf-h72j-4rw9"
+reason = "Not reachable - undici@5.29.0 is pulled in via @actions/core@1 -> @actions/http-client@2. validateFromFile() does not make HTTP requests, so undici's response decompression code is never exercised."
+
+[[IgnoredVulns]]
+id = "GHSA-v9p9-hfj2-hcw8"
+reason = "Not reachable - undici@5.29.0 is pulled in via @actions/core@1 -> @actions/http-client@2. validateFromFile() does not open WebSocket connections, so undici's WebSocket parameter validation is never exercised."
+
+[[IgnoredVulns]]
+id = "GHSA-vrm6-8vpv-qv8q"
+reason = "Not reachable - undici@5.29.0 is pulled in via @actions/core@1 -> @actions/http-client@2. validateFromFile() does not open WebSocket connections, so undici's WebSocket decompression code is never exercised."
+
+[[IgnoredVulns]]
+id = "GHSA-w5hq-g745-h8pq"
+reason = "Not reachable - uuid is a transitive dep via @azure/msal-node and @backstage/plugin-permission-common. validateFromFile() performs local YAML schema validation and never exercises Azure auth or Backstage permission code paths."
