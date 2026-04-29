@@ -1,6 +1,6 @@
 {
   "name": "@step-security/backstage-entity-validator",
-  "version": "0.7.0",
+  "version": "0.6.0",
   "author": "step-security",
   "description": "Backstage entity validator",
   "main": "dist/index.js",
