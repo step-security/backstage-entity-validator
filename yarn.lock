@@ -592,17 +592,17 @@
     luxon "^3.0.0"
 
 "@backstage/plugin-permission-common@^0.9.3":
-  version "0.9.3"
-  resolved "https://registry.npmjs.org/@backstage/plugin-permission-common/-/plugin-permission-common-0.9.3.tgz"
-  integrity sha512-QB9HtU4DlKyWaQFJvwiiURej1GYeMn4fB38lsVmvHuFTxraMIwEgoHjSjzdCFBBItrOUl4FILaaIZBtJGei9vA==
+  version "0.9.7"
+  resolved "https://registry.npmjs.org/@backstage/plugin-permission-common/-/plugin-permission-common-0.9.7.tgz#8756675bcc7b15c74e7dd349cfe7d94fa706823c"
+  integrity sha512-jteu8wE/N6FAMS+NRSy++i3RlOzQNRrkBK9KQai3BKnEuGMWFZSaWNrBNLwaSJm1QIYF/Vo3Q6P3i+o+Bs7aOg==
   dependencies:
     "@backstage/config" "^1.3.6"
     "@backstage/errors" "^1.2.7"
     "@backstage/types" "^1.2.2"
     cross-fetch "^4.0.0"
     uuid "^11.0.0"
-    zod "^3.22.4"
-    zod-to-json-schema "^3.20.4"
+    zod "^3.25.76 || ^4.0.0"
+    zod-to-json-schema "^3.25.1"
 
 "@backstage/plugin-scaffolder-common@^1.7.2":
   version "1.7.4"
@@ -1813,9 +1813,9 @@ fast-json-stable-stringify@^2.1.0:
   integrity sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==
 
 fast-uri@^3.0.1:
-  version "3.1.8"
-  resolved "https://registry.npmjs.org/fast-uri/-/fast-uri-3.1.8.tgz#f7db8d942e20eead3cfe93b0beeb4eb0169e938b"
-  integrity sha512-GZMtZUTNRpOVIECoXwLNZS5xUGE+mVNbTB8h/7Rwh2TFWcBQiPzTgyZi05BF9UMZKkLJv8XBRJTlU7zg8+ZfMg==
+  version "3.1.9"
+  resolved "https://registry.npmjs.org/fast-uri/-/fast-uri-3.1.9.tgz#f1deba822b1d6ac79da2f860e872a63470cff203"
+  integrity sha512-hS/0Wt3Ya043oKXs0sIxrMpKQITXhMLIrVAKKXi4gozGC9v7YRWVnXIZzjNPTO02M9BdxLCWqK1yRXgNziVyJQ==
 
 fast-xml-builder@^1.1.5:
   version "1.2.0"
@@ -1858,9 +1858,9 @@ find-up@^4.0.0, find-up@^4.1.0:
     path-exists "^4.0.0"
 
 follow-redirects@^1.16.0:
-  version "1.16.0"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.16.0.tgz#28474a159d3b9d11ef62050a14ed60e4df6d61bc"
-  integrity "sha1-KEdKFZ07nRHvYgUKFO1g5N9tYbw= sha512-y5rN/uOsadFT/JfYwhxRS5R7Qce+g3zG97+JrtFZlC9klX/W5hD7iiLzScI4nZqUS7DNUdhPgw4xI8W2LuXlUw=="
+  version "1.16.1"
+  resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.16.1.tgz#6e0efa40a727fb369b98dab15883ec34787d675e"
+  integrity sha512-FNvFGzoMLWmE6Yj9spb/zjd7yiNCHiAW9/Tg9CXrQ8wuu32HtlJOwWO11OJafl5FfY3DxTdQ0vj42zU1kvv5jg==
 
 form-data@^4.0.6:
   version "4.0.6"
@@ -3267,9 +3267,9 @@ undici@^5.25.4:
     "@fastify/busboy" "^2.0.0"
 
 undici@^6.23.0:
-  version "6.28.1"
-  resolved "https://registry.npmjs.org/undici/-/undici-6.28.1.tgz#aa9d2c44aef3840bef80216f2a50f337543a3fbd"
-  integrity sha512-zWpdTVD54H48CIybL0rWQ3ukpb9d23wM7eH5RtfdmeP70cWHNjtfo7P4vZX+5CoDcO53J4Pu5uXp7lNfjc6DRA==
+  version "6.29.1"
+  resolved "https://registry.npmjs.org/undici/-/undici-6.29.1.tgz#a3317c5df0236e0633727d9a7bd4f7ed195d8575"
+  integrity sha512-EvRlUt/QqAEvXdQeRMYUfwOQsfzpDztykrG2owGEE/rBOBoYv9uF39ZzsNDh4lTFHhTr2XOZjKkYgueD12ZmGA==
 
 universal-github-app-jwt@^1.1.1:
   version "1.2.0"
@@ -3417,12 +3417,12 @@ zen-observable@^0.10.0:
   resolved "https://registry.npmjs.org/zen-observable/-/zen-observable-0.10.0.tgz"
   integrity sha512-iI3lT0iojZhKwT5DaFy2Ce42n3yFcLdFyOh01G7H0flMY60P8MJuVFEoJoNwXlmAyQ45GrjL6AcZmmlv8A5rbw==
 
-zod-to-json-schema@^3.20.4:
-  version "3.25.1"
-  resolved "https://registry.npmjs.org/zod-to-json-schema/-/zod-to-json-schema-3.25.1.tgz"
-  integrity sha512-pM/SU9d3YAggzi6MtR4h7ruuQlqKtad8e9S0fmxcMi+ueAK5Korys/aWcV9LIIHTVbj01NdzxcnXSN+O74ZIVA==
+zod-to-json-schema@^3.25.1:
+  version "3.25.2"
+  resolved "https://registry.npmjs.org/zod-to-json-schema/-/zod-to-json-schema-3.25.2.tgz#3fa799a7badd554541472fb65843fdc460b2e5aa"
+  integrity sha512-O/PgfnpT1xKSDeQYSCfRI5Gy3hPf91mKVDuYLUHZJMiDFptvP41MSnWofm8dnCm0256ZNfZIM7DSzuSMAFnjHA==
 
-zod@^3.22.4:
-  version "3.25.76"
-  resolved "https://registry.npmjs.org/zod/-/zod-3.25.76.tgz"
-  integrity sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==
+"zod@^3.25.76 || ^4.0.0":
+  version "4.6.7"
+  resolved "https://registry.npmjs.org/zod/-/zod-4.6.7.tgz#e806cf64a7f4e37635ce9f2f52c04c3766f75e5b"
+  integrity sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==
